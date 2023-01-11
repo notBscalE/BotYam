@@ -64,9 +64,9 @@ class BotYamPoster(tweepy.StreamingClient):
         reply_text_batyam = "https://twitter.com/FromBotYam/status/1611546128524185601/video/1"
         reply_text_police = "https://twitter.com/FromBotYam/status/1611542331781529601/video/1"
         reply_text_gebels = "https://twitter.com/FromBotYam/status/1611548817853227009/video/1"
-        reply_text_misadot = [reply_text_gebels, "https://twitter.com/FromBotYam/status/1612853363066175490/video/1", "https://twitter.com/FromBotYam/status/1613254658860150789"]
+        reply_text_misadot = [reply_text_gebels, "https://twitter.com/FromBotYam/status/1612853363066175490/video/1", "https://twitter.com/FromBotYam/status/1613254658860150789/video/1"]
         reply_text_smol = "https://twitter.com/FromBotYam/status/1613249771275182089/video/1"
-        reply_videons_reply = ["https://twitter.com/FromBotYam/status/1611495568148238336", "https://twitter.com/FromBotYam/status/1612852295980683264/video/1"]
+        reply_videons_reply = ["https://twitter.com/FromBotYam/status/1611495568148238336/video/1", "https://twitter.com/FromBotYam/status/1612852295980683264/video/1"]
         reply_text_reply = f"מה עכשיו לערב אותי פה חבורה של קקות {reply_videons_reply[random.randint(0,1)]}"
        
         # Users bank
