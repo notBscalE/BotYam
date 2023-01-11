@@ -90,6 +90,7 @@ class BotYamPoster(tweepy.StreamingClient):
         syslog.syslog(syslog.LOG_ERR, status_code)
 
 def main():
+    syslog.syslog(syslog.LOG_INFO, "BOT-YAM - VERSION 2.1.0 >>>>"
     stream = init_streamobject()
     syslog.syslog(syslog.LOG_INFO, "Adding stream rules...")
     stream.add_rules(tweepy.StreamRule("from:LucyBscalE OR from:aviv_yashar OR from:shaulig OR from:DvirAviam OR from:YoavFried1 OR from:StevenRaz5 OR from:nir_hau"))
