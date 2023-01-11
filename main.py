@@ -73,7 +73,8 @@ class BotYamPoster(tweepy.StreamingClient):
         batyam_folks = ['134339937', '1533213104']
 
         # Replies
-        post_reply(api, tweet, reply_words, reply_text_reply)
+        if not tweet.data['author_id'] == "1604848395805401092":
+            post_reply(api, tweet, reply_words, reply_text_reply)
         post_reply(api, tweet, gebels_words, reply_text_gebels)
         post_reply(api, tweet, police_words, reply_text_police)
         if any(botyam_og in tweet.data['author_id'] for botyam_og in batyam_folks):
