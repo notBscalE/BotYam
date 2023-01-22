@@ -42,6 +42,10 @@ class BotYamPoster(tweepy.StreamingClient):
 
     # Define a callback function to handle tweets
     def on_tweet(self, tweet):
+        # Make it easy on Yashar
+        if (tweet.data['author_id'] == "1533213104" and random.randint(0,3) != 0):
+            return
+        
         api = init_api()
         # Debug
         tweet_data = f"NEW TWEET from @{api.get_user(id=tweet.data['author_id']).data['username']}: {tweet.data['text']}"
@@ -64,7 +68,7 @@ class BotYamPoster(tweepy.StreamingClient):
         reply_text_batyam = "https://twitter.com/FromBotYam/status/1611546128524185601/video/1"
         reply_text_police = "https://twitter.com/FromBotYam/status/1611542331781529601/video/1"
         reply_text_gebels = "https://twitter.com/FromBotYam/status/1611548817853227009/video/1"
-        reply_text_misadot = [reply_text_gebels, "https://twitter.com/FromBotYam/status/1612853363066175490/video/1", "https://twitter.com/FromBotYam/status/1613254658860150789/video/1"]
+        reply_text_misadot = [reply_text_gebels, "https://twitter.com/FromBotYam/status/1612853363066175490/video/1", "https://twitter.com/FromBotYam/status/1616828733314170881/video/1"]
         reply_text_smol = "https://twitter.com/FromBotYam/status/1613249771275182089/video/1"
         reply_videons_reply = ["https://twitter.com/FromBotYam/status/1611495568148238336/video/1", "https://twitter.com/FromBotYam/status/1612852295980683264/video/1"]
         reply_text_reply = f"מה עכשיו לערב אותי פה חבורה של קקות {reply_videons_reply[random.randint(0,1)]}"
@@ -91,11 +95,11 @@ class BotYamPoster(tweepy.StreamingClient):
         syslog.syslog(syslog.LOG_ERR, status_code)
 
 def main():
-    syslog.syslog(syslog.LOG_INFO, "BOT-YAM - VERSION 2.1.0 >>>>")
+    syslog.syslog(syslog.LOG_INFO, "BOT-YAM - VERSION 2.1.1 >>>>")
     stream = init_streamobject()
     syslog.syslog(syslog.LOG_INFO, "Adding stream rules...")
     stream.add_rules(tweepy.StreamRule("from:LucyBscalE OR from:aviv_yashar OR from:shaulig OR from:DvirAviam OR from:YoavFried1 OR from:StevenRaz5 OR from:nir_hau"))
-    stream.add_rules(tweepy.StreamRule("@yourusername"))
+    stream.add_rules(tweepy.StreamRule("@FromBotYam"))
     # Start listening for tweets
     syslog.syslog(syslog.LOG_INFO, "Starting Twitter stream!")
     stream.filter(expansions="author_id")
