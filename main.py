@@ -46,6 +46,10 @@ class BotYamPoster(tweepy.StreamingClient):
         if (tweet.data['author_id'] == "1533213104" and random.randint(0,3) != 0):
             return
         
+        # Don't use bot for own replies
+        if tweet.data['author_id'] == "1604848395805401092":
+            return
+        
         api = init_api()
         # Debug
         tweet_data = f"NEW TWEET from @{api.get_user(id=tweet.data['author_id']).data['username']}: {tweet.data['text']}"
@@ -77,8 +81,7 @@ class BotYamPoster(tweepy.StreamingClient):
         batyam_folks = ['134339937', '1533213104']
 
         # Replies
-        if not tweet.data['author_id'] == "1604848395805401092":
-            post_reply(api, tweet, reply_words, reply_text_reply)
+        post_reply(api, tweet, reply_words, reply_text_reply)
         post_reply(api, tweet, gebels_words, reply_text_gebels)
         post_reply(api, tweet, police_words, reply_text_police)
         if any(botyam_og in tweet.data['author_id'] for botyam_og in batyam_folks):
