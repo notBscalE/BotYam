@@ -64,7 +64,7 @@ class BotYamPoster(tweepy.StreamingClient):
         bat_yam_words = ['בת ים', 'בת ימ', 'בת-ים', 'בת-ימ', 'https://t.co/PZqQaUVGAM']
         gebels_words = ['גבלס', 'נאצי', 'היטלר', 'קורונה', 'מסמכים', 'ההסמכה']
         police_words = ['שוטר', 'מלשין', 'מלשינ', 'נלשן', 'מלשנ', 'להלשין', 'משטרה', 'משטרות', 'סירנה', 'שיטור', 'בוגדים', 'בוגד', 'בגידה', '👮‍♀️', '🚨', '🚔', '🚓', '👮‍♂️', 'קטטה', 'מתקוטט', 'משטרע', 'מאפיה', 'טרור', 'סירנות', '1312', '13.12', '1 3 1 2', '13 12', '1 312', '131 2', '13-12', '1-312', '131-2', '1-3-1-2', '1 3 12', '1 3 12', '13 1 2', '1-3-12', '1-3-12', '13-1-2', 'acab', 'ac ab', 'ACAB', 'AC AB', 'אגאב', 'קצין', 'קצינ', 'קצונה', 'צהוב', 'כחול']
-        misadot_words = ['מסעדה', 'מסעדות']
+        misadot_words = ['העיקר מסעדות', 'מסעדה', 'מסעדות']
         smol_words = ['שמאל', '0מול', 'סמול']
         reply_words = ['@FromBotYam']
         
@@ -86,6 +86,9 @@ class BotYamPoster(tweepy.StreamingClient):
         post_reply(api, tweet, police_words, reply_text_police)
         if any(botyam_og in tweet.data['author_id'] for botyam_og in batyam_folks):
             post_reply(api, tweet, bat_yam_words, reply_text_batyam)
+        # Misadot (will be sectioned off later)
+        if tweet.data['text'] == misadot_words[0]:
+            post_reply(api, tweet, misadot_words[0], reply_text_misadot[-1])
         if not any(gebels_word in tweet.data['text'] for gebels_word in gebels_words):
             post_reply(api, tweet, misadot_words, reply_text_misadot[random.randint(0,2)])
         else:
@@ -98,7 +101,7 @@ class BotYamPoster(tweepy.StreamingClient):
         syslog.syslog(syslog.LOG_ERR, status_code)
 
 def main():
-    syslog.syslog(syslog.LOG_INFO, "BOT-YAM - VERSION 2.1.1 >>>>")
+    syslog.syslog(syslog.LOG_INFO, "BOT-YAM - VERSION 2.1.2 >>>>")
     stream = init_streamobject()
     syslog.syslog(syslog.LOG_INFO, "Adding stream rules...")
     stream.add_rules(tweepy.StreamRule("from:LucyBscalE OR from:aviv_yashar OR from:shaulig OR from:DvirAviam OR from:YoavFried1 OR from:StevenRaz5 OR from:nir_hau"))
