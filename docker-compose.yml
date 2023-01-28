@@ -1,0 +1,7 @@
+# docker-compose.yml
+version: 3.0
+services:
+  botyam:
+    build: .
+    env_file:
+      - /etc/environment
