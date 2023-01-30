@@ -4,16 +4,15 @@ import syslog
 import random
 import json
 from main import Connector
-from main import init_api
 
-def init_streamobject():
+def init_streamobject(conn):
     syslog.syslog(syslog.LOG_INFO, "Loading Stream object...")
-    bearer = os.getenv("BEARER")
-    return BotYamPoster(bearer)
+    return BotYamPoster(conn.get_bearer())
 
-def post_reply(conn, victim_bank, tweet, words, reply_text, postcounter):
+def post_reply(conn, victim_bank, tweet, words, reply_text_bank, postcounter):
     # Search for word in word bank
     if any(word in tweet.data['text'] for word in words):
+        reply_text = reply_text_bank[random.randint(0, (reply_text_bank.len()-1))]
         # Post reply
         if tweet.data['author_id'] in victim_bank.author_id:
             reply_text = victim_bank.text[random.randint(0,2)] + "\n" + reply_text
@@ -41,8 +40,7 @@ class BotYamPoster(tweepy.StreamingClient):
             return
         
         conn = Connector()
-        i, d = conn.conn_consul.get.kv('botyam/reply_bank')
-        reply_bank = json.loads(d["Value"])
+        reply_bank = json.loads(conn.dbconn.get_reply_bank())
 
         # Debug
         tweet_data = f"NEW TWEET from @{conn.api.get_user(id=tweet.data['author_id']).data['username']}: {tweet.data['text']}"
@@ -55,16 +53,33 @@ class BotYamPoster(tweepy.StreamingClient):
         
         # Run on all gags
         for gag in reply_bank.gags:
-            post_reply(conn, reply_bank.victims, tweet, gag.keywords, gag.reply, postcounter)
+            postcounter = post_reply(conn, reply_bank.victims, tweet, gag.keywords, gag.reply, postcounter)
         
         # Special gags
         if reply_bank.special_gags['haikar_misadot'].keywords[0] in tweet.data["text"]:
-            post_reply(conn, reply_bank.victims, tweet, reply_bank.special_gags['haikar_misadot'].keywords, reply_bank.special_gags['haikar_misadot'].reply)
+            postcounter = post_reply(
+                conn,
+                reply_bank.victims,
+                tweet,
+                reply_bank.special_gags['haikar_misadot'].keywords,
+                reply_bank.special_gags['haikar_misadot'].reply,
+                postcounter)
         elif not any(gebol in tweet.data['text'] for gebol in reply_bank.gags[1].keywords) and any(misada in tweet.data['text'] for misada in reply_bank.special_gags['misadot'].keywords):
-            post_reply(conn, reply_bank.victims, tweet, reply_bank.special_gags['misadot'].keywords)
+            postcounter = post_reply(
+                conn,
+                reply_bank.victims,
+                tweet,
+                reply_bank.special_gags['misadot'].keywords,
+                reply_bank.special_gags['misadot'].reply,
+                postcounter)
         
-        if any(tilter in tweet.data['text'] for tilter in reply_bank.special_gags['tilt'].keywords) or (postcounter == 0 and not "@FromBotYam" in tweet.data['text']):
-            post_reply(conn, reply_bank.victims, tweet, reply_bank.special_gags['tilt'].keywords, reply_bank.special_gags['tilt'].reply)
+        if any(tilter in tweet.data['text'] for tilter in reply_bank.special_gags['tilt'].keywords) or (postcounter == 0 and "@FromBotYam" in tweet.data['text']):
+            postcounter = post_reply(
+                conn,
+                reply_bank.victims,
+                tweet, reply_bank.special_gags['tilt'].keywords,
+                reply_bank.special_gags['tilt'].reply,
+                postcounter)
 
     # Define a callback function to handle errors
     def on_error(self, status_code):
