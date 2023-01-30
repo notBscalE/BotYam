@@ -3,5 +3,7 @@ version: "3.0"
 services:
   botyam:
     build: .
+    environment:
+      - PYTHONUNBUFFERED=1
     env_file:
       - /etc/environment
