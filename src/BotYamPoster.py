@@ -11,8 +11,8 @@ def post_reply(conn, victim_bank, tweet, words, reply_text_bank, postcounter):
     if any(word in tweet.data['text'] for word in words):
         reply_text = reply_text_bank[random.randint(0, (len(reply_text_bank)-1))]
         # Post reply
-        if tweet.data['author_id'] in victim_bank['author_id']:
-            reply_text = victim_bank['reply'][random.randint(0,2)] + "\n" + reply_text
+        if tweet.data['author_id'] in victim_bank['author_id'] and not "@FromBotYam" in tweet.data['text']:
+            reply_text = victim_bank['reply'][random.randint(0,2)] + "\nו" + reply_text
         res = conn.api.create_tweet(
               text=reply_text,
               in_reply_to_tweet_id=tweet["id"]
