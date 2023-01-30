@@ -10,5 +10,5 @@ tweepy==4.12.1
 urllib3==1.26.13
 jsonschema==3.2.0
 six==1.16.0
-async-timeout=4.0.2
-redis=4.4.2
+async-timeout==4.0.2
+redis==4.4.2
