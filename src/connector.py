@@ -29,10 +29,10 @@ class Connector():
         )
     
     def get_reply_bank(self):
-        return json.loads(self.dbconn.get('reply_bank').decode("utf-8"))
+        return json.loads(self.dbconn.json().get('reply_bank').decode("utf-8"))
     
     def get_victims(self):
-        return json.loads(self.dbconn.get('reply_bank').decode("utf-8")).victims
+        return json.loads(self.dbconn.json().get('reply_bank').decode("utf-8")).victims
     
     def get_bearer(self):
         return self.dbconn.hget("api", "bearer").decode("utf-8")
