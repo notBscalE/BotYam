@@ -10,7 +10,7 @@ def main():
     conn = Connector()
     stream = init_streamobject(conn)
     syslog.syslog(syslog.LOG_INFO, "Adding stream rules...")
-    stream.add_rules(tweepy.StreamRule(conn.get_victims().stream_filter))
+    stream.add_rules(tweepy.StreamRule(conn.get_victims()['stream_filter']))
     stream.add_rules(tweepy.StreamRule("@FromBotYam"))
     # Start listening for tweets
     syslog.syslog(syslog.LOG_INFO, "Starting Twitter stream!")

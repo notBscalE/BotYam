@@ -32,7 +32,7 @@ class Connector():
         return self.dbconn.json().get('reply_bank')
     
     def get_victims(self):
-        return self.dbconn.json().get('reply_bank').victims
+        return self.dbconn.json().get('reply_bank')['victims']
     
     def get_bearer(self):
         return self.dbconn.hget("api", "bearer").decode("utf-8")
