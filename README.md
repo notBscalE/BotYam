@@ -6,8 +6,11 @@ The bot was originally intended to annoy Aviv Yashar, but now it developed into 
 
 ## How to install?
 * Install Python3
-* Install tweepy package
-* Get the API keys from Lucy because that's how this shit works now
+* Install pre-requirements from requirements.txt:
+```
+pip install requirements.txt
+```
+* Access to Redis DB from Lucy
 * Profit.
 
 ## Who's responsible for this mess?
