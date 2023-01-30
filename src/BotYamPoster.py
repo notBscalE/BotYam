@@ -3,7 +3,7 @@ import os
 import syslog
 import random
 import json
-from main import Connector
+from connector import Connector
 
 def init_streamobject(conn):
     syslog.syslog(syslog.LOG_INFO, "Loading Stream object...")
