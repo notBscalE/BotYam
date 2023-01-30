@@ -24,21 +24,21 @@ class Connector():
         syslog.syslog(syslog.LOG_INFO, "Loading Twitter API connector...")
 
         return tweepy.Client(
-            bearer_token=str(dbconn.hget("api", "bearer")),
-            consumer_key=str(dbconn.hget("api", "consumer_key")),
-            consumer_secret=str(dbconn.hget("api", "consumer_secret"))
-            access_token=str(dbconn.hget("api", "access_token")),
-            access_token_secret=str(dbconn.hget("api","access_token_secret"))
+            bearer_token=dbconn.hget("api", "bearer").decode("utf-8"),
+            consumer_key=dbconn.hget("api", "consumer_key").decode("utf-8"),
+            consumer_secret=dbconn.hget("api", "consumer_secret").decode("utf-8"),
+            access_token=dbconn.hget("api", "access_token").decode("utf-8"),
+            access_token_secret=dbconn.hget("api","access_token_secret").decode("utf-8")
         )
     
     def get_reply_bank(self):
-        return json.loads(self.dbconn.get('reply_bank'))
+        return json.loads(self.dbconn.get('reply_bank').decode("utf-8"))
     
     def get_victims(self):
-        return json.loads(self.dbconn.get('reply_bank')).victims
+        return json.loads(self.dbconn.get('reply_bank').decode("utf-8")).victims
     
     def get_bearer(self):
-        return str(self.dbconn.hget("api", "bearer"))
+        return self.dbconn.hget("api", "bearer").decode("utf-8")
 
 def main():
     syslog.syslog(syslog.LOG_INFO, "BOT-YAM - VERSION 2.1.2 >>>>")
