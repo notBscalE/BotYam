@@ -1,12 +1,9 @@
 import tweepy
-import os
-import syslog
 import random
-import json
 from connector import Connector
 
 def init_streamobject(conn):
-    syslog.syslog(syslog.LOG_INFO, "Loading Stream object...")
+    print("Loading Stream object...")
     return BotYamPoster(conn.get_bearer())
 
 def post_reply(conn, victim_bank, tweet, words, reply_text_bank, postcounter):
@@ -21,7 +18,7 @@ def post_reply(conn, victim_bank, tweet, words, reply_text_bank, postcounter):
               in_reply_to_tweet_id=tweet["id"]
         )
         response_data = f"RESPONDING: {res.data['text']}"
-        syslog.syslog(syslog.LOG_INFO, response_data)
+        print(response_data)
         return (postcounter + 1)
 
 class BotYamPoster(tweepy.StreamingClient):
@@ -40,15 +37,15 @@ class BotYamPoster(tweepy.StreamingClient):
             return
         
         conn = Connector()
-        reply_bank = json.loads(conn.dbconn.get_reply_bank())
+        reply_bank = conn.get_reply_bank()
 
         # Debug
         tweet_data = f"NEW TWEET from @{conn.api.get_user(id=tweet.data['author_id']).data['username']}: {tweet.data['text']}"
-        syslog.syslog(syslog.LOG_INFO, tweet_data)
+        print(tweet_data)
 
         # Spare me if starts with RT
         if tweet.data['text'][:2] == "RT":
-            syslog.syslog(syslog.LOG_INFO, "Skipping retweet...")
+            print("Skipping retweet...")
             return
         
         # Run on all gags
@@ -84,4 +81,4 @@ class BotYamPoster(tweepy.StreamingClient):
     # Define a callback function to handle errors
     def on_error(self, status_code):
         # Print the error code
-        syslog.syslog(syslog.LOG_ERR, status_code)
+        print("ERROR: " + status_code)
