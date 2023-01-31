@@ -70,7 +70,10 @@ class BotYamPoster(tweepy.StreamingClient):
                 reply_bank['special_gags']['misadot']['keywords'],
                 reply_bank['special_gags']['misadot']['reply'],
                 postcounter)
-        
+
+        if (postcounter == 0):
+            print("Post counter for this tweet: 0! Posting tilt.")
+
         if any(tilter in tweet.data['text'] for tilter in reply_bank['special_gags']['tilt']['keywords']) or (postcounter == 0 and "@FromBotYam" in tweet.data['text']):
             postcounter = post_reply(
                 conn,
