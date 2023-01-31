@@ -78,7 +78,8 @@ class BotYamPoster(tweepy.StreamingClient):
             postcounter = post_reply(
                 conn,
                 reply_bank['victims'],
-                tweet, reply_bank['special_gags']['tilt']['keywords'],
+                tweet,
+                reply_bank['special_gags']['tilt']['keywords'],
                 reply_bank['special_gags']['tilt']['reply'],
                 postcounter)
         
@@ -86,7 +87,8 @@ class BotYamPoster(tweepy.StreamingClient):
             postcounter = post_reply(
                 conn,
                 reply_bank['victims'],
-                tweet, reply_bank['special_gags']['tilt']['keywords'],
+                tweet,
+                ['@FromBotYam'],
                 reply_bank['special_gags']['tilt']['reply'],
                 postcounter)
 
