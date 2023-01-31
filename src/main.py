@@ -5,7 +5,7 @@ from BotYamPoster import init_streamobject
 from connector import Connector
 
 def main():
-    print("BOT-YAM - VERSION 2.1.2 >>>>")
+    print("BOT-YAM - VERSION 3.0.1 >>>>")
     conn = Connector()
     stream = init_streamobject(conn)
     print("Adding stream rules...")
