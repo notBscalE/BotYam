@@ -17,9 +17,10 @@ def post_reply(conn, victim_bank, tweet, words, reply_text_bank, postcounter):
               text=reply_text,
               in_reply_to_tweet_id=tweet["id"]
         )
+        postcounter = postcounter + 1
         response_data = f"RESPONDING: {res.data['text']}"
         print(response_data)
-        return (postcounter + 1)
+    return postcounter
 
 class BotYamPoster(tweepy.StreamingClient):
 
@@ -27,7 +28,7 @@ class BotYamPoster(tweepy.StreamingClient):
     def on_tweet(self, tweet):
         # Make it easy on Yashar
 
-        postcounter = 0
+        postcounter = int(0)
 
         if (not "@FromBotYam" in tweet.data['text'] and random.randint(0,3) != 0):
             return
