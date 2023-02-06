@@ -19,6 +19,7 @@ Victims
 If you're included in the victims list, a random number generator will decide if an automated response will be posted, with an additional message.
 
 The victims currently are:
+
 - Lucy Joshua (@LucyBscalE)
 - Stav Raz (@StevenRaz5)
 - Aviv Yashar (@aviv_yashar)
@@ -27,13 +28,16 @@ The victims currently are:
 - Shauli Greenfeld (@shaulig)
 - Nir Hauschner (@nir_hau)
 
+
 !! note "Join the victim list!"
    Wanna be a part of the list? Ask us in our DMs and you'll get there!
 
 The optional responses added to the post:
+
 - "שלום קורבן"
 - "אי אפשר לברוח מהחרא הזה אה"
 - "מה קורה כפרה"
+
 
 For example:
 
