@@ -16,8 +16,8 @@ markdown_extensions:
       base_path: .
   - admonition
 nav:
-  - Home: 'index.md'
-  - User Guide: 'usage.md'
-  - Data for nerds: 'data.md'
-  - License: 'license.md'
+  - Home: 'files/index.md'
+  - User Guide: 'files/usage.md'
+  - Data for nerds: 'files/data.md'
+  - License: 'files/license.md'
 copyright: "Copyright &copy; 2023 <a href="https://twitter.com/LucyBscalE">Lucy Joshua</a> and friends, under the GNU GPLv3."
