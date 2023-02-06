@@ -20,4 +20,4 @@ nav:
   - User Guide: 'files/usage.md'
   - Data for nerds: 'files/data.md'
   - License: 'files/license.md'
-copyright: "Copyright &copy; 2023 <a href="https://twitter.com/LucyBscalE">Lucy Joshua</a> and friends, under the GNU GPLv3."
+copyright: 'Copyright &copy; 2023 <a href="https://twitter.com/LucyBscalE">Lucy Joshua</a> and friends, under the GNU GPLv3.'
