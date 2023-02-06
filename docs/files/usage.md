@@ -11,8 +11,7 @@ For example:
 
 <blockquote class="twitter-tweet"><p lang="qme" dir="ltr"><a href="https://t.co/KSrhYS8clw">pic.twitter.com/KSrhYS8clw</a></p>&mdash; אני מבוט-ים (@FromBotYam) <a href="https://twitter.com/FromBotYam/status/1622255958901530628?ref_src=twsrc%5Etfw">February 5, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-!!! note
-Be noted that the keywords **don't work in a match-case property**, which means that any way a certain keyword will be written in the post, it will trigger the bot.
+!!! note Be noted that the keywords **don't work in a match-case property**, which means that any way a certain keyword will be written in the post, it will trigger the bot.
 
 Victims
 -------
@@ -182,8 +181,7 @@ None
 אאא
 ```
 
-!!! note
-Yep. That's right. If you'll tag @FromBotYam with nothing on, you'll get the tilt gag. You have been warned.
+!!! note Yep. That's right. If you'll tag @FromBotYam with nothing on, you'll get the tilt gag. You have been warned.
 
 **The possible replies**:
 <blockquote class="twitter-tweet" data-conversation="none"><p lang="iw" dir="rtl">סרבאאאקקקקקקק <a href="https://t.co/pnh4jveVRH">pic.twitter.com/pnh4jveVRH</a></p>&mdash; אני מבוט-ים (@FromBotYam) <a href="https://twitter.com/FromBotYam/status/1620403511102930945?ref_src=twsrc%5Etfw">January 31, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> <br>

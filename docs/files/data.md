@@ -1,7 +1,6 @@
 # Data for nerds
 
-!!! warning
-Before contributing, read the [license](license.md).
+!!! warning Before contributing, read the [license](license.md).
 
 Here you have something to get, if you want to participate in the coding and somehow you got included - congrats! You are in.
 Here are the basic knowledge stuff.
@@ -15,8 +14,7 @@ The DB is used for storing everything in stores, as its credentials are currentl
 ## API Tokens
 The API tokens are stored in the API hash, used to communicate with Twitter API.
 
-!!! warning
-As stated before, the API will have a massive update in February 9th.
+!!! warning As stated before, the API will have a massive update in February 9th.
 
 ## The Data Structure
 
