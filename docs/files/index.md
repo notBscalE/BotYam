@@ -19,6 +19,7 @@ Here you can have the syntax menu, but also read some information for nerds.
 
 ### Credits
 All jokes and videos are accumulated and edited by Lucy Joshua, except:
+
 - "I'm From Bat Yam" - Aviv Yashar (@aviv_yashar)
 - "Gebels" - Aviv Yashar (@aviv_yashar)
 - "Vodka Redbull/Misadot" - Lindi (@lindi_orginal)
