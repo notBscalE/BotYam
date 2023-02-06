@@ -7,3 +7,5 @@ Welcome to the Bot Yam documentation, to ultimate source of knowledge when it co
     Please follow `@FromBotYam` for updates.
 
 Here you can have the syntax menu, but also read some information for nerds.
+
+If you consider contributing, read the [license](license.md) first.

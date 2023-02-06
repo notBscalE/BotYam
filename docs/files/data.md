@@ -1,6 +1,7 @@
 # Data for nerds
 
-!!! warning Before contributing, read the [license](license.md).
+!!! warning
+    Before contributing, read the [license](license.md).
 
 Here you have something to get, if you want to participate in the coding and somehow you got included - congrats! You are in.
 Here are the basic knowledge stuff.
