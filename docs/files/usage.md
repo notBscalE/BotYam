@@ -29,8 +29,8 @@ The victims currently are:
 - Nir Hauschner (@nir_hau)
 
 
-!! note "Join the victim list!"
-   Wanna be a part of the list? Ask us in our DMs and you'll get there!
+!!! note "Join the victim list!"
+    Wanna be a part of the list? Ask us in our DMs and you'll get there!
 
 The optional responses added to the post:
 
@@ -188,7 +188,11 @@ None
 ```
 
 !!! note
-    Yep. That's right.<br>If you'll tag `@FromBotYam` with nothing on, you'll get the tilt gag.<br>You have been warned.
+    Yep. That's right.
+    
+    If you'll tag `@FromBotYam` with nothing on, you'll get the tilt gag.
+    
+    You have been warned.
 
 **The possible replies**:
 <blockquote class="twitter-tweet" data-conversation="none"><p lang="iw" dir="rtl">סרבאאאקקקקקקק <a href="https://t.co/pnh4jveVRH">pic.twitter.com/pnh4jveVRH</a></p>&mdash; אני מבוט-ים (@FromBotYam) <a href="https://twitter.com/FromBotYam/status/1620403511102930945?ref_src=twsrc%5Etfw">January 31, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> <br>
