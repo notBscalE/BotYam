@@ -8,4 +8,21 @@ Welcome to the Bot Yam documentation, to ultimate source of knowledge when it co
 
 Here you can have the syntax menu, but also read some information for nerds.
 
-If you consider contributing, read the [license](license.md) first.
+## Who to blame?
+
+### Main Development Team
+- Lucy Joshua (@LucyBscalE) - Coding, jokes and video editing (except credited below)
+- Nir Hauschner (@nir_hau) - Profile/Cover Photos
+- Staz Raz (@StevenRaz5) - Jokes
+- Nadav Koren (@NadavKorn) - QA
+- Aviv Yashar (@aviv_yashar) - Main victim
+
+### Credits
+All jokes and videos are accumulated and edited by Lucy Joshua, except:
+- "I'm From Bat Yam" - Aviv Yashar (@aviv_yashar)
+- "Gebels" - Aviv Yashar (@aviv_yashar)
+- "Vodka Redbull/Misadot" - Lindi (@lindi_orginal)
+- "Misadot Re-enactment" - Kai Mairone (@KaiMairone)
+
+### License
+The project is protected under the GNU GPLv3. For more information, visit the [license page](license.md).<br>Please read if you conside contributing.
