@@ -3,31 +3,31 @@
 version: 2.1
 
 jobs:
-    clone:
-      machine:
+  clone:
+    machine:
+      image: "ubuntu-2004:current"
+    steps:
+      - run:
+          name: Clone
+          command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && gh repo sync"
+  deploy:
+    machine:
         image: "ubuntu-2004:current"
-      steps:
-        - run:
-            name: Clone
-            command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && gh repo sync"
-    deploy:
-      machine:
-          image: "ubuntu-2004:current"
-      steps:
-          - run:
-              name: Deploy Over SSH
-              command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && docker-compose up -d --build"
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && docker-compose up -d --build"
 
 workflows:
-    build-and-deploy:
-      jobs:
-        - clone:
-            filters:
-              branches:
-                only: main
-        - deploy:
-            requires:
-              - clone
-            filters:
-              branches:
-                only: main
+  clone-and-run:
+    jobs:
+      - clone:
+          filters:
+            branches:
+              only: main
+      - deploy:
+          requires:
+            - clone
+          filters:
+            branches:
+              only: main
