@@ -13,11 +13,11 @@ def post_reply(conn, victim_bank, tweet, words, reply_text_bank, postcounter):
         # Post reply
         try:
             if tweet.data['author_id'] in victim_bank['author_id'] and not "@FromBotYam" in tweet.data['text']:
-            reply_text = victim_bank['reply'][random.randint(0,2)] + "\nו" + reply_text
-            res = conn.api.create_tweet(
+                reply_text = victim_bank['reply'][random.randint(0,2)] + "\nו" + reply_text
+                res = conn.api.create_tweet(
                     text=reply_text,
                     in_reply_to_tweet_id=tweet["id"]
-            )
+                )
         except tweepy.errors.TwitterServerError as e:
             print("ERROR: An error occured, we'll try again in a few minutes. The error: " + str(e))
             try:
