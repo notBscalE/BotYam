@@ -26,7 +26,9 @@ jobs:
             - "b7:39:6c:c8:a1:24:72:26:e6:a8:d1:c6:0d:24:82:a6"
       - run:
           name: Clone
-          command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && gh repo sync"
+          command: |
+            echo $SSH_KEY > pkey
+            ssh -i pkey $SSH_USER@$SSH_HOST "cd /etc/BotYam && gh repo sync"
   deploy:
     machine:
         image: "ubuntu-2004:current"
@@ -36,4 +38,6 @@ jobs:
             - "b7:39:6c:c8:a1:24:72:26:e6:a8:d1:c6:0d:24:82:a6"
       - run:
           name: Deploy Over SSH
-          command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && docker-compose up -d --build"
+          command: |
+            echo $SSH_KEY > pkey
+            ssh -i pkey $SSH_USER@$SSH_HOST "cd /etc/BotYam && docker-compose up -d --build"
