@@ -21,6 +21,9 @@ jobs:
     machine:
       image: "ubuntu-2004:current"
     steps:
+      - add_ssh_keys:
+          fingerprints: 
+            - "b7:39:6c:c8:a1:24:72:26:e6:a8:d1:c6:0d:24:82:a6"
       - run:
           name: Clone
           command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && gh repo sync"
@@ -28,6 +31,9 @@ jobs:
     machine:
         image: "ubuntu-2004:current"
     steps:
+      - add_ssh_keys:
+          fingerprints: 
+            - "b7:39:6c:c8:a1:24:72:26:e6:a8:d1:c6:0d:24:82:a6"
       - run:
           name: Deploy Over SSH
           command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && docker-compose up -d --build"
