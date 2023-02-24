@@ -23,11 +23,11 @@ jobs:
     steps:
       - run:
           name: Clone
-          command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && gh repo sync"
+          command: ssh root@35.190.218.192 "cd /etc/BotYam && gh repo sync"
   deploy:
     machine:
         image: "ubuntu-2004:current"
     steps:
       - run:
           name: Deploy Over SSH
-          command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && docker-compose up -d --build"
+          command: ssh root@35.190.218.192 "cd /etc/BotYam && docker-compose up -d --build"
