@@ -2,6 +2,20 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+workflows:
+  clone-and-run:
+    jobs:
+      - clone
+          #filters:
+          #  branches:
+          #    only: main
+      - deploy
+          #requires:
+          #  - clone
+          #filters:
+          #  branches:
+          #    only: main
+
 jobs:
   clone:
     machine:
@@ -17,17 +31,3 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: ssh $SSH_USER@$SSH_HOST "cd /etc/BotYam && docker-compose up -d --build"
-
-workflows:
-  clone-and-run:
-    jobs:
-      - clone:
-          filters:
-            branches:
-              only: main
-      - deploy:
-          requires:
-            - clone
-          filters:
-            branches:
-              only: main
