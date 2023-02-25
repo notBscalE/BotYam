@@ -16,8 +16,9 @@ jobs:
       run: |
         install -m 600 -D /dev/null ~/.ssh/id_rsa
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        echo "IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
     - name: connect, pull, build and run
-      run: ssh -i ~/.ssh/id_rsa -oHostKeyAlgorithms=+sk-ecdsa-sha2-nistp256@openssh.com ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull && docker-compose up -d --build && exit"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull && docker-compose up -d --build && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
