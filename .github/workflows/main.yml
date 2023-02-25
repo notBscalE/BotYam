@@ -15,8 +15,9 @@ jobs:
       # https://stackoverflow.com/a/70447517
       run: |
         install -m 600 -D /dev/null ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        chmod 700 ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        echo "IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
     - name: connect, pull, build and run
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull && docker-compose up -d --build && exit"
