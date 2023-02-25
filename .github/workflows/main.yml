@@ -19,6 +19,6 @@ jobs:
         chmod 700 ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-        ssh -oHostKeyAlgorithms=+rsa-sha2-512 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull && docker-compose up -d --build && exit"
+        ssh -oHostKeyAlgorithms=ssh-rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull && docker-compose up -d --build && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
