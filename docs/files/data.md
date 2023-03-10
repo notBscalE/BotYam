@@ -16,7 +16,11 @@ The DB is used for storing everything in stores, as its credentials are currentl
 The API tokens are stored in the API hash, used to communicate with Twitter API.
 
 !!! warning "Twitter API License Changes"
-    Currently, the bot is operating under the Twitter API Elevated Access.<br>On February 9th, new changes for the API access that has been announced will come into effect, and currently there isn't a guarantee that the bot will be up after the changes will be applied.<br>
+    Currently, the bot is operating under the Twitter API Elevated Access.
+    
+    On February 9th, new changes for the API access that has been announced will come into effect, and currently there isn't a guarantee that the bot will be up after the changes will be applied.
+    
+    
     Please follow `@FromBotYam` for updates.
 
 ## The Data Structure
