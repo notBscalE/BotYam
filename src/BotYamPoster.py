@@ -125,10 +125,12 @@ class BotYamPoster(tweepy.StreamingClient):
         if message['sender_id'] == self.user_id:
             return
 
+        print("Someone sliding in DMs.")
+
         conn = Connector()
 
         # Get the text of the message
-        text = message['text']
+        text = message.data['text']
 
         # Find the URL of the tweet in the message
         tweet_url_regex = r'https?://twitter.com/\w+/status/(\d+)(?:\?.*)?$'
