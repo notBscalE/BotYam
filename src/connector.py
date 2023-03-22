@@ -2,10 +2,14 @@ import os
 import redis
 import time
 import tweepy
+from datetime import datetime
+
+def printlog(text):
+    print((datetime.fromtimestamp(time.time())).strftime("%d-%m-%Y, %H:%M:%S") + ": " + text)
 
 class Connector():
     def __init__(self):
-        print(time.time() + ": " + "Loading Redis connector...")
+        printlog("Loading Redis connector...")
         # TODO: Add token
         self.dbconn = redis.Redis(
             host=os.getenv("REDIS_HOST"),
@@ -14,11 +18,11 @@ class Connector():
         )
 
         self.api = Connector.init_api(self.dbconn)
-        print(time.time() + ": " + "Success loading connectors!")
+        printlog("Success loading connectors!")
 
     def init_api(dbconn):
         # Syslog report
-        print(time.time() + ": " + "Loading Twitter API connector...")
+        printlog("Loading Twitter API connector...")
 
         return tweepy.Client(
             bearer_token=dbconn.hget("api", "bearer").decode("utf-8"),
