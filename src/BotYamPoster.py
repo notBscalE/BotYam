@@ -2,10 +2,11 @@ import tweepy
 import random
 import re
 import requests
+import time
 from connector import Connector
 
 def init_streamobject(conn):
-    print("Loading Stream object...")
+    print(time.time() + ": " + "Loading Stream object...")
     return BotYamPoster(conn.get_bearer())
 
 def expand_tco_url(url):
@@ -23,26 +24,29 @@ def post_reply(conn, victim_bank, tweet, words, reply_text_bank, postcounter):
         try:
             if tweet.data['author_id'] in victim_bank['author_id'] and not "@FromBotYam" in tweet.data['text']:
                 reply_text = victim_bank['reply'][random.randint(0,2)] + "\nו" + reply_text
+            res = conn.api.create_tweet(
+                text=reply_text,
+                in_reply_to_tweet_id=tweet["id"]
+            )
+            response_data = f"RESPONDING: {res.data['text']}"
+            print(time.time() + ": " + response_data)
+        except tweepy.errors.TwitterServerError as e:
+            print(time.time() + ": " + "ERROR: An error occured, we'll try again in a few minutes. The error: " + str(e))
+            time.sleep(5)
+            try:
+                if tweet.data['author_id'] in victim_bank['author_id'] and not "@FromBotYam" in tweet.data['text']:
+                    reply_text = victim_bank['reply'][random.randint(0,2)] + "\nו" + reply_text
                 res = conn.api.create_tweet(
                     text=reply_text,
                     in_reply_to_tweet_id=tweet["id"]
                 )
-        except tweepy.errors.TwitterServerError as e:
-            print("ERROR: An error occured, we'll try again in a few minutes. The error: " + str(e))
-            try:
-                if tweet.data['author_id'] in victim_bank['author_id'] and not "@FromBotYam" in tweet.data['text']:
-                    reply_text = victim_bank['reply'][random.randint(0,2)] + "\nו" + reply_text
-                    res = conn.api.create_tweet(
-                        text=reply_text,
-                        in_reply_to_tweet_id=tweet["id"]
-                    )
                 
                 response_data = f"RESPONDING: {res.data['text']}"
-                print(response_data)
+                print(time.time() + ": " + response_data)
             except Exception as e:
-                print("ERROR: An exception occured. The error: " + str(e))
+                print(time.time() + ": " + "ERROR: An exception occured. The error: " + str(e))
         except Exception as e:
-            print("ERROR: An exception occured. The error: " + str(e))
+            print(time.time() + ": " + "ERROR: An exception occured. The error: " + str(e))
         postcounter = postcounter + 1
     return postcounter
 
@@ -65,11 +69,11 @@ class BotYamPoster(tweepy.StreamingClient):
 
         # Debug
         tweet_data = f"NEW TWEET from @{conn.api.get_user(id=tweet.data['author_id']).data['username']}: {tweet.data['text']}"
-        print(tweet_data)
+        print(time.time() + ": " + tweet_data)
 
         # Spare me if starts with RT
         if tweet.data['text'][:2] == "RT":
-            print("Skipping retweet...")
+            print(time.time() + ": " + "Skipping retweet...")
             return
         
         # Run on all gags
@@ -95,7 +99,7 @@ class BotYamPoster(tweepy.StreamingClient):
                 postcounter)
 
         if (postcounter == 0 and "@FromBotYam" in tweet.data['text']):
-            print("Post counter for this tweet: 0! Posting tilt.")
+            print(time.time() + ": " + "Post counter for this tweet: 0! Posting tilt.")
 
         if any(tilter in tweet.data['text'] for tilter in reply_bank['special_gags']['tilt']['keywords']):
             postcounter = post_reply(
@@ -118,4 +122,4 @@ class BotYamPoster(tweepy.StreamingClient):
     # Define a callback function to handle errors
     def on_error(self, status_code):
         # Print the error code
-        print("ERROR: " + status_code)
+        print(time.time() + ": " + "ERROR: " + status_code)
