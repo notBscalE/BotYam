@@ -18,7 +18,7 @@ The API tokens are stored in the API hash, used to communicate with Twitter API.
 !!! warning "Twitter API License Changes"
     Currently, the bot is operating under the Twitter API Elevated Access.
     
-    On February 9th, new changes for the API access that has been announced will come into effect, and currently there isn't a guarantee that the bot will be up after the changes will be applied.
+    On April 19th, new changes for the API access that has been announced will come into effect. The bot will act as a videons archive until integrations into a suitable, affordable platform will apply.
     
     
     Please follow `@FromBotYam` for updates.

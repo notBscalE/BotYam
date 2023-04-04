@@ -1,5 +1,10 @@
 # BotYam
-A bot that is proudly from Bat Yam, under the twitter handle **@FromBatYam**.
+A bot that is proudly from Bat Yam, under the twitter handle **@FromBotYam**.
+
+## Twitter API Changes Notice
+On April 19th, new changes for the API access that has been announced will come into effect. The bot will act as a videons archive until integrations into a suitable, affordable platform will apply.
+
+Updates will be posted on the **@FromBotYam** handle on Twitter.
 
 ## What's going on?
 The bot was originally intended to annoy Aviv Yashar, but now it developed into a massive shitposting machine that is the only hope for both the left™ and Hapoel™™.
